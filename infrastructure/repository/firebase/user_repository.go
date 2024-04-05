@@ -115,7 +115,6 @@ func (ur *UserRepository) CreateUser(user model.User) (*model.User, error) {
 }
 
 func (ur *UserRepository) UpdateUser(user model.User) (*model.User, error) {
-	user.CreatedAt = time.Now()
 	user.UpdatedAt = time.Now()
 	_, err := ur.client.Collection("users").Doc(user.ID).Set(context.Background(), user)
 	if err != nil {
